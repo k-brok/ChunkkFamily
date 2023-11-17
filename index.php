@@ -10,32 +10,24 @@
 	}
 
 	$(document).ready(function(){
-		const evtSource = new EventSource("/websocket.php", {
-			withCredentials: true,
-		});
- 
-		evtSource.onopen = function(event) { 
+		var websocket = new WebSocket("ws://chunkk.family.familiebrok.nl/websockets.php"); 
+		websocket.onopen = function(event) { 
 			showMessage("<div class='chat-connection-ack'>Connection is established!</div>");		
 		}
-		evtSource.onmessage = function(event) {
+		websocket.onmessage = function(event) {
 			var Data = JSON.parse(event.data);
 			showMessage("<div class='"+Data.message_type+"'>"+Data.message+"</div>");
 			$('#chat-message').val('');
 		};
 		
-		evtSource.onerror = function(event){
-			console.log("evtSource error: ", event);
+		websocket.onerror = function(event){
+			console.log("WebSocket error: ", event);
 			showMessage("<div class='error'>Error: "+event+"</div>");
 		};
-		evtSource.onclose = function(event){
+		websocket.onclose = function(event){
 			showMessage("<div class='chat-connection-ack'>Connection Closed</div>");
 		}; 
 		
-		evtSource.addEventListener("ping", (event) => {
-			const time = JSON.parse(event.data).time;
-			showMessage("<div class='error'>ping: "+time+"</div>");
-});
-
 		$('#frmChat').on("submit",function(event){
 			event.preventDefault();
 			$('#chat-user').attr("type","hidden");		
@@ -43,7 +35,7 @@
 				chat_user: $('#chat-user').val(),
 				chat_message: $('#chat-message').val()
 			};
-			evtSource.send(JSON.stringify(messageJSON));
+			websocket.send(JSON.stringify(messageJSON));
 		});
 	});
 </script>
