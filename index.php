@@ -10,7 +10,7 @@
 	}
 
 	$(document).ready(function(){
-		var websocket = new WebSocket("ws://localhost:8090/demo/php-socket.php"); 
+		var websocket = new WebSocket("ws://localhost:8090/websockets.php"); 
 		websocket.onopen = function(event) { 
 			showMessage("<div class='chat-connection-ack'>Connection is established!</div>");		
 		}
@@ -38,5 +38,12 @@
 		});
 	});
 </script>
+<form id="frmChat">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="chat-user" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="chat-message" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form> 
 </body>
 </html>
