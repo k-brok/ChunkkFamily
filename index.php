@@ -7,7 +7,7 @@
     <script>  
 
 	$(document).ready(function(){
-		var websocket = new WebSocket("ws://localhost:1234/websockets.php"); 
+		var websocket = new WebSocket("ws://127.0.0.1:1234/websockets.php"); 
 		websocket.onopen = function(event) { 
 			$("#root").append("<div class='chat-connection-ack'>Connection is established!</div>");		
 		}

@@ -1,5 +1,5 @@
 <?php
-$address = 'localhost';
+$address = '127.0.0.1';
 $port    = 1234;
 
 echo "Starting socket server on $address:$port\n";
