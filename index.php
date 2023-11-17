@@ -18,6 +18,7 @@
 		
 		websocket.onerror = function(event){
 			$("#root").append("<div class='error'>Problem due to some Error</div>");
+			$("#root").append(event.data);
 		};
 		websocket.onclose = function(event){
 			$("#root").append("<div class='chat-connection-ack'>Connection Closed</div>");
