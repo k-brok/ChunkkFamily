@@ -20,9 +20,11 @@
 			$('#chat-message').val('');
 		};
 		
-		websocket.onerror = function(event){
-			showMessage("<div class='error'>Problem due to some Error</div>");
-		};
+		websocket.socket.addEventListener("error", (event) => {
+			console.log("WebSocket error: ", event);
+			showMessage("<div class='error'>Error: "+event+"</div>");
+		});
+		
 		websocket.onclose = function(event){
 			showMessage("<div class='chat-connection-ack'>Connection Closed</div>");
 		}; 
