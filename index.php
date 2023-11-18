@@ -10,7 +10,7 @@
 	}
 
 	$(document).ready(function(){
-		var websocket = new WebSocket("ws://chunkk.family.familiebrok.nl/websockets.php"); 
+		var websocket = new WebSocket("wss://chunkk.family.familiebrok.nl/websockets.php"); 
 		websocket.onopen = function(event) { 
 			showMessage("<div class='chat-connection-ack'>Connection is established!</div>");		
 		}
