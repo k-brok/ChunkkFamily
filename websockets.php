@@ -1,6 +1,6 @@
 <?php
-define('HOST_NAME',"localhost"); 
-define('PORT',"80");
+define('HOST_NAME',"chunkk.family.familiebrok.nl"); 
+define('PORT',"443");
 $null = NULL;
 
 //require_once("class.chathandler.php");
